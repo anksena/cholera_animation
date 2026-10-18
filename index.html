@@ -18,6 +18,7 @@
     </div>
     <div class="header-actions">
       <span class="scene-counter-badge" id="scene-badge">Scene 1 of 5</span>
+      <button class="btn-icon" id="btn-toggle-dialogue" title="Toggle Dialogue (H)" aria-label="Toggle Dialogue">👁</button>
       <button class="btn-icon" id="btn-jump" title="Table of Scenes (M)" aria-label="Open scenes overview">☰</button>
       <button class="btn-icon" id="btn-fullscreen" title="Toggle Fullscreen (F)" aria-label="Toggle Fullscreen">⛶</button>
     </div>
@@ -39,7 +40,7 @@
     </div>
 
     <!-- 2. Dialogue & Character Card -->
-    <section class="dialogue-card" aria-live="polite">
+    <section class="dialogue-card" id="dialogue-card" aria-live="polite">
       <div class="speaker-header">
         <div class="speaker-avatar" id="speaker-avatar">A</div>
         <div class="speaker-meta">
@@ -65,6 +66,7 @@
         <span class="key-tag">←</span>
         <span class="key-tag">→</span>
         <span class="key-tag">Space</span>
+        <span class="key-tag">H (Hide)</span>
       </div>
 
       <div class="controls-right">

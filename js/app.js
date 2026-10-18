@@ -1,6 +1,7 @@
 (function () {
   const scenes = STORY_DATA.scenes;
   let currentIndex = 0;
+  let isDialogueHiddenByUser = false;
 
   const els = {
     title: document.getElementById("story-title"),
@@ -9,12 +10,14 @@
     progressBar: document.getElementById("progress-bar"),
     sceneTag: document.getElementById("scene-tag"),
     sceneImage: document.getElementById("scene-image"),
+    dialogueCard: document.getElementById("dialogue-card"),
     speakerAvatar: document.getElementById("speaker-avatar"),
     speakerName: document.getElementById("speaker-name"),
     speakerRole: document.getElementById("speaker-role"),
     dialogueText: document.getElementById("dialogue-text"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
+    btnToggleDialogue: document.getElementById("btn-toggle-dialogue"),
     notesToggle: document.getElementById("notes-toggle"),
     notesContent: document.getElementById("notes-content"),
     notesChevron: document.getElementById("notes-chevron"),
@@ -38,6 +41,24 @@
     buildSceneMenu();
     bindEvents();
     renderScene(currentIndex, false);
+  }
+
+  function updateDialogueVisibility() {
+    const scene = scenes[currentIndex];
+    const shouldHide = isDialogueHiddenByUser || scene.hideDialogue === true || !scene.dialogue;
+    if (els.dialogueCard) {
+      els.dialogueCard.classList.toggle("hidden", shouldHide);
+    }
+    if (els.btnToggleDialogue) {
+      els.btnToggleDialogue.classList.toggle("active", shouldHide);
+      els.btnToggleDialogue.title = shouldHide ? "Show Dialogue (H)" : "Hide Dialogue (H)";
+      els.btnToggleDialogue.textContent = shouldHide ? "👁‍🗨" : "👁";
+    }
+  }
+
+  function toggleDialogueVisibility() {
+    isDialogueHiddenByUser = !isDialogueHiddenByUser;
+    updateDialogueVisibility();
   }
 
   function renderScene(index, animate = true) {
@@ -69,8 +90,10 @@
     els.speakerAvatar.style.background = scene.speaker.color;
     els.speakerName.textContent = scene.speaker.name;
     els.speakerRole.textContent = scene.speaker.role;
-    els.dialogueText.textContent = scene.dialogue;
+    els.dialogueText.textContent = scene.dialogue || "";
     els.notesContent.textContent = scene.notes || "No presenter notes for this slide.";
+
+    updateDialogueVisibility();
 
     els.btnPrev.disabled = index === 0;
     els.btnNext.innerHTML = (index === total - 1) ? `Restart Story ↺` : `Next Scene →`;
@@ -121,6 +144,10 @@
     els.btnNext.onclick = nextScene;
     els.btnPrev.onclick = prevScene;
 
+    if (els.btnToggleDialogue) {
+      els.btnToggleDialogue.onclick = toggleDialogueVisibility;
+    }
+
     els.notesToggle.onclick = () => {
       const isOpen = els.notesContent.classList.toggle("open");
       els.notesChevron.textContent = isOpen ? "▲" : "▼";
@@ -145,6 +172,8 @@
       } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         prevScene();
+      } else if (e.key.toLowerCase() === "h") {
+        toggleDialogueVisibility();
       } else if (e.key.toLowerCase() === "m") {
         openModal();
       } else if (e.key.toLowerCase() === "f") {

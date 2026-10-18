@@ -62,3 +62,15 @@ A dedicated script using Google Gemini (`gemini-2.5-flash-image`) to generate hi
 # Run using the local virtual environment
 .\.venv\Scripts\python.exe generate_images.py [--debug]
 ```
+
+---
+
+## ⌨️ Controls & Shortcuts
+
+- **Toggle Dialogue Visibility**: Click `👁` in the header or press `H` to toggle dialogue on/off at will.
+- **Per-Scene Hide**: Add `hideDialogue: true` to any scene object in `js/story-data.js` to automatically hide the dialogue box for that scene (ideal for title cards or visual-only moments).
+- **Next Scene**: Click `Next Scene →`, press `Right Arrow`, `Space`, or `PageDown`.
+- **Previous Scene**: Click `← Back`, press `Left Arrow`, or `PageUp`.
+- **Table of Scenes**: Click `☰` in the header or press `M`.
+- **Fullscreen**: Click `⛶` in the header or press `F`.
+

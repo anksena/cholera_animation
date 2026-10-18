@@ -39,8 +39,8 @@ function runTests() {
 
   const requiredIds = [
     'story-title', 'story-subtitle', 'scene-badge', 'progress-bar',
-    'scene-tag', 'scene-image', 'speaker-avatar', 'speaker-name',
-    'speaker-role', 'dialogue-text', 'btn-prev', 'btn-next',
+    'scene-tag', 'scene-image', 'dialogue-card', 'speaker-avatar', 'speaker-name',
+    'speaker-role', 'dialogue-text', 'btn-prev', 'btn-next', 'btn-toggle-dialogue',
     'notes-toggle', 'notes-content', 'notes-chevron', 'btn-jump',
     'modal-overlay', 'btn-close-modal', 'scene-grid', 'btn-fullscreen'
   ];
@@ -53,10 +53,12 @@ function runTests() {
   assert(html.includes('js/story-data.js'), 'index.html includes js/story-data.js');
   assert(html.includes('js/app.js'), 'index.html includes js/app.js');
 
-  // 3. Verify CSS exists and non-empty
+  // 3. Verify CSS exists and has hidden support
   const cssPath = path.join(__dirname, '..', 'css', 'styles.css');
   const css = fs.readFileSync(cssPath, 'utf8');
   assert(css.length > 500, 'css/styles.css exists and contains styles');
+  assert(css.includes('.dialogue-card.hidden'), 'css/styles.css includes .dialogue-card.hidden rule');
+
 
   console.log(`\nTest Summary: ${passed} passed, ${failed} failed`);
   if (failed > 0) {
