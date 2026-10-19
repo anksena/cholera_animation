@@ -2,21 +2,30 @@
 
 An interactive, character-driven presentation player set in Victorian London during the Industrial Revolution and the 1854 Broad Street cholera outbreak.
 
-## 📖 Current Storyline: "The Ghost Map: A London Outbreak"
+## 📖 Current Storyline: "The Ghost Map: Broad Street Outbreak"
 
-Follow the harrowing dilemma of poor textile mill workers in Soho, London:
-1. **Scene 1: The Sudden Fever** (`images/scene1-sickbed.png`)
-   - **Speaker**: Eliza Hughes (Textile Mill Weaver)
-   - **Story**: Mary lies ill and feverish in their cramped tenement room before dawn. Eliza agonizes over whether to stay and nurse her or report to the factory.
-2. **Scene 2: The Cost of a Shift** (`images/scene2-shift-dilemma.png`)
-   - **Speaker**: Thomas Ward (Fellow Mill Worker)
-   - **Story**: Thomas warns that missing a shift means immediate wage docking and eviction. He urges Eliza to fetch fresh water while he covers her loom station.
-3. **Scene 3: The Sweet Water of Soho** (`images/scene3-broad-street-pump.png`)
-   - **Speaker**: Eliza Hughes
-   - **Story**: Eliza arrives at the Broad Street cast-iron street pump through the industrial smog, filling her tin pail with what everyone assumes is cool, pure water.
-4. **Scene 4: The Blue Death** (`images/scene4-cholera-warning.png`)
-   - **Speaker**: Thomas Ward
-   - **Story**: Thomas races down Broad Street in terror to grab Eliza's arm: workers are dying across Soho and Dr. John Snow is investigating—the illness is cholera!
+Follow the harrowing dilemma of poor textile mill workers in Soho, London across 7 connected scenes:
+1. **Scene 1: The Morning Shadow** (`images/slide_1.png`)
+   - **Speaker**: Eliza (Mill Worker)
+   - **Story**: Mary lies ill in bed; Eliza watches over her with growing concern as the morning begins.
+2. **Scene 2: The Cost of a Shift** (`images/slide_2.png`)
+   - **Speaker**: Martha (Coworker & Friend)
+   - **Story**: Martha arrives at the bedside and discusses the agonizing choice: miss work and lose their wages, or leave Mary alone.
+3. **Scene 3: The Soho Road** (`images/slide_3.png`)
+   - **Speaker**: Eliza
+   - **Story**: Eliza journeys down the dusty road towards Broad Street to fetch fresh water.
+4. **Scene 4: At the Broad Street Pump** (`images/slide_4.png`)
+   - **Speaker**: Eliza
+   - **Story**: Eliza arrives at the Broad Street pump, preparing to draw a pail of water for her sister.
+5. **Scene 5: Running Footsteps** (`images/slide_5.png`)
+   - **Speaker**: Martha
+   - **Story**: Martha runs breathless down Broad Street to intercept Eliza before she touches the pump handle.
+6. **Scene 6: The Blue Death** (`images/slide_6.png`)
+   - **Speaker**: Martha
+   - **Story**: Martha reveals the terrifying truth: the illness spreading across Soho is cholera!
+7. **Scene 7: The Dark Truth** (`images/slide_7.png`)
+   - **Speaker**: Eliza
+   - **Story**: Eliza realizes in horror that Mary drank from this very water source the night before.
 
 ---
 
@@ -25,19 +34,19 @@ Follow the harrowing dilemma of poor textile mill workers in Soho, London:
 The application adopts the **3-Tier Interactive Storyboard** pattern:
 
 1. **Scene Viewport (`<div class="scene-card">`)**:
-   - 16:9 cinema viewport displaying high-resolution generated historical scenes.
+   - 16:9 cinema viewport displaying pixel art and historical scenes.
    - Smooth cross-fade transitions and chapter tags.
 
 2. **Dialogue & Character Box (`<section class="dialogue-card">`)**:
-   - Character avatar badges with distinct colors (`#0284c7` for Eliza, `#d97706` for Thomas).
+   - Character avatar badges with distinct colors (`#2563eb` for Eliza, `#e11d48` for Martha).
    - Speaker name, role title, and historical dialogue.
 
 3. **Navigation & Controls Bar (`<nav class="controls-bar">`)**:
    - "Next Scene" and "Back" buttons with loop-around restart.
-   - Dynamic progress bar and scene counter badge (`Scene 1 of 4`).
-   - Keyboard shortcuts (`←`, `→`, `Space`, `M` for scenes drawer, `F` for fullscreen).
+   - Dynamic progress bar and scene counter badge (`Scene 1 of 7`).
+   - Keyboard shortcuts (`←`, `→`, `Space`, `M` for scenes drawer, `F` for fullscreen, `H` to toggle dialogue).
    - Expandable Presenter Notes with historical citations and footnotes.
-   - Deep linking with hash routing (`#scene-1` to `#scene-4`).
+   - Deep linking with hash routing (`#scene-1` to `#scene-7`).
 
 ---
 
